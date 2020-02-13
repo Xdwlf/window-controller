@@ -1,14 +1,14 @@
-import { useLocation } from 'react-router';
+// import { useLocation } from 'react-router';
 
 type Params = { [key: string]: string };
 
 function useQuery(): Params {
     const params: Params = {};
-    const searchParams = new window.URLSearchParams(useLocation().search);
+    // const searchParams = new window.URLSearchParams(useLocation().search);
 
-    searchParams.forEach((value: string, key: string) => {
-        params[key] = value;
-    });
+    // searchParams.forEach((value: string, key: string) => {
+    //     params[key] = value;
+    // });
     return params;
 }
 

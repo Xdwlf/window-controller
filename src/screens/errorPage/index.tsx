@@ -7,6 +7,8 @@ const ErrorPage = (): JSX.Element => {
     // const { error } = location.state;
 
     // const history = useHistory();
+    // TODO: ROUTING figure out what to do instead of history
+
 
     const handleClick = () => {
         // history.replace('/dashboard');

@@ -24,6 +24,7 @@ class GenericErrorBoundary extends React.Component<{}, ErrorState> {
     private handleClick = (): void => {
         this.setState({ hasError: false });
         // history.replace('/dashboard');
+        // TODO: ROUTING figure out what to do instead of history
     }
 
     public render(): ReactNode {

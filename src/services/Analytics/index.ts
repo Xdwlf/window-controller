@@ -1,6 +1,6 @@
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { ReactPlugin } from '@microsoft/applicationinsights-react-js';
-import history from 'src/WizardHistory';
+// import history from 'src/WizardHistory';
 
 const reactPlugin = new ReactPlugin();
 
@@ -20,7 +20,8 @@ class Analytics {
                 instrumentationKey: process.env.INSTRUMENTATION_KEY as string,
                 extensions: [reactPlugin],
                 extensionConfig: {
-                    [reactPlugin.identifier]: { history },
+                    // TODO: ROUTING figure out what to do instead of history
+                    // [reactPlugin.identifier]: { history },
                 },
             },
         });

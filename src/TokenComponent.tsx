@@ -29,6 +29,7 @@ const Token = (props: TokenProps): ReactElement | null => {
             // };
             // ApiService.call('Cpa_getToken', args).then(resp => {
             //     history.push('/');
+            // TODO: ROUTING figure out what to do instead of history
             // });
         } else {
             // ApiService.call('Cpa_RefreshToken');

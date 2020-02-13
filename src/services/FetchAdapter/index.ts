@@ -90,7 +90,8 @@ class ApiService {
         } else if (apiError.status >= 400 && apiError.status <= 550) {
             if (options && options.skipErrorPage !== true) {
                 // history.push('/error');
-                // find replacement for history
+                // TODO: ROUTING figure out what to do instead of history
+
             }
         }
 
