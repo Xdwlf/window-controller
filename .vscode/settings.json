@@ -1,0 +1,37 @@
+{
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        {
+            "language": "typescript",
+            "autoFix": true
+        },
+        {
+            "language": "typescriptreact",
+            "autoFix": true
+        }
+    ],
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": false
+    },
+    "[typescript]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": false
+    },
+    "[markdown]": {
+        "editor.formatOnSave": false,
+        "editor.wordWrap": "on",
+        "editor.renderWhitespace": "all",
+        "editor.acceptSuggestionOnEnter": "off"
+    },
+    "[json]": {
+        "editor.formatOnSave": false
+    },
+    "cSpell.ignoreWords": [
+        "status",
+        "taxcaddy"
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
+}

@@ -1,0 +1,47 @@
+@import "~@variables";
+
+@navHeight: 50px;
+@loaderWidth: 150px;
+
+.fullScreenContainer {
+    z-index: @full-screen-loader;
+    position: absolute;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    overflow: hidden;
+    background-color: white;
+    transition: opacity, visibility, 0.5s ease-in-out;
+
+    &.loading {
+        opacity: 100;
+    }
+    &.loaded {
+        visibility: hidden;
+        opacity: 0;
+        .img {
+            transform: scale(0);
+        }
+    }
+}
+.fullScreenLoader {
+    position: absolute;
+    width: 150px;
+    top: calc(50% - 100px);
+    left: calc(50% - (@loaderWidth / 2));
+}
+
+.logo {
+    height: 100px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img {
+    height: 100%;
+    transform: scale(1);
+    transition: scale, 0.3s ease-in-out;
+}

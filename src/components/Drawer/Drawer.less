@@ -1,0 +1,62 @@
+@import "~@variables";
+@import "~@mixins";
+@toggleBarWidth: 80px;
+
+.drawerPaper,
+.toggleBar,
+.drawerContent {
+    box-sizing: border-box;
+    display: flex;
+    background-color: white;
+}
+
+.drawerContent {
+    .box-shadow-light()
+}
+
+.drawerPaper {
+    position: absolute;
+    overflow-x: visible;
+    flex-direction: row;
+    width: @toggleBarWidth;
+    top: 0;
+    bottom: 0;
+    z-index: @drawer;
+}
+
+.toggleBar {
+    flex: 1;
+    z-index: @drawer-bar;
+    padding: 20px 0;
+    flex-direction: column;
+    position: relative;
+    min-width: @toggleBarWidth;
+    max-width: @toggleBarWidth;
+    min-height: 600px;
+    overflow-y: hidden;
+    align-items: center;
+    justify-content: center;
+    overflow-x:hidden;
+}
+
+.contentContainer {
+    flex: 1;
+    width: 100%;
+}
+
+.closeButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    top: 25px;
+    .closeButton{
+        min-width: 35px;
+        border-radius: 50%;
+        padding: 0;
+        height: 35px;
+        width: 35px;
+    }
+}

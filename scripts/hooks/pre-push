@@ -1,0 +1,73 @@
+#!/bin/sh
+
+echo "Starting pre-push process... \n"
+currentBranch=$(git branch | grep \* | cut -d ' ' -f2)
+
+./scripts/hooks/dependency-check.js
+
+if [[ "$currentBranch" == "master" ]]; then
+    echo 'You are commiting to master, this will create an automatic deployment to stage'
+    read -p "Do you want to proceed to commit and make a build? [y|n] " -n 1 -r < /dev/tty
+    echo
+    if [[ $REPLY != "y" ]]; then
+        echo
+        echo "aborting...."
+        exit 1;
+    fi
+fi
+
+lintErrors=$(./node_modules/.bin/eslint \
+    --cache \
+    --ext .tsx,ts,.js \
+    --ignore-pattern 'node_modules/' \
+    --ignore-path .gitignore \
+    --ignore-pattern '**/*.test.js' \
+    --ignore-pattern '**/*.test.ts' \
+    --ignore-pattern '**/*.test.tsx' \
+     ./src)
+
+hasImportError=$(echo "$lintErrors" | grep 'import/no-unresolved')
+hasDebuggerError=$(echo "$lintErrors" | grep 'no-debugger')
+hasParsingError=$(echo "$lintErrors" | grep 'Parsing error: Unexpected token')
+hasMergeConflict=$(echo "$lintErrors" | grep '<<<<<<< HEAD')
+hasConsoleStatement=$(echo "$lintErrors" | grep 'no-console')
+
+if [[ -n "$hasImportError" ]]; then
+    cat "./scripts/hooks/dwight.txt"
+    echo '\n'
+    echo "you have serious issues"
+    echo '\033[31m You have linting errors that will fail the build, import/no-unresolved \033[0m'
+    echo "\033[31m $hasImportError \033[0m"
+    exit 1;
+fi
+if [[ -n "$hasDebuggerError" ]]; then
+    cat "./scripts/hooks/dwight.txt"
+    echo '\n'
+    echo '\033[31m Really... You cannot commit debuggers \033[0m'
+    echo "\033[31m $hasDebuggerError \033[0m"
+    exit 1;
+fi
+if [[ -n "$hasMergeConflict" ]]; then
+    cat "./scripts/hooks/dwight.txt"
+    echo '\n'
+    echo '\033[31m Really... resolve your conflicts before committing. \033[0m'
+    echo "\033[31m $hasParsingError \033[0m"
+    echo "\033[31m $hasMergeConflict \033[0m"
+    exit 1;
+fi
+if [[ -n "$hasParsingError" ]]; then
+    cat "./scripts/hooks/dwight.txt"
+    echo '\n'
+    echo '\033[31m PSHH... Your Code is broken, fix before comitting. \033[0m'
+    echo "\033[31m $hasParsingError \033[0m"
+    exit 1;
+fi
+
+
+if [[ -n "$hasConsoleStatement" ]]; then
+    echo '\033[31m Remove console statements. \033[0m'
+    echo "\033[31m $hasConsoleStatement \033[0m"
+    exit 1;
+fi
+
+npm test

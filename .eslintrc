@@ -1,0 +1,182 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "airbnb",
+        "plugin:jsx-a11y/recommended"
+    ],
+    "settings": {
+        "import/resolver": {
+            "webpack": {
+                "config": "./config/webpack.shared.js"
+            }
+        },
+    },
+    "env": {
+        "node": true,
+        "es6": true,
+        "mocha": true,
+        "browser": true,
+        "jquery": true,
+        "jest": true
+    },
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "./",
+        "createDefaultProgram": true
+    },
+    "plugins": [
+        "react",
+        "import",
+        "jsx-a11y",
+        "react-hooks",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "eqeqeq": "off",
+        "react/prop-types": "off",
+        "linebreak-style": "off",
+        "no-plusplus": "off",
+        "class-methods-use-this": "off",
+        "no-unused-vars": "off",
+        "no-return-assign": "off",
+        "no-underscore-dangle": "off",
+        "import/no-named-as-default": "off",
+        "import/prefer-default-export": "off",
+        "react/destructuring-assignment": "off",
+        "implicit-arrow-linebreak": "off",
+        "no-void": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/jsx-props-no-spreading": "off",
+        "jsx-a11y/label-has-associated-control": [
+            2,
+            {
+                "assert": "either"
+            }
+        ],
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "react/jsx-indent": [
+            "error",
+            4
+        ],
+        "react/jsx-indent-props": [
+            2,
+            4
+        ],
+        "react/jsx-curly-spacing": [
+            2,
+            {
+                "when": "never",
+                "children": true
+            }
+        ],
+        "no-param-reassign": [
+            "error",
+            {
+                "props": false
+            }
+        ],
+        "react/jsx-uses-vars": 2,
+        "comma-dangle": [
+            "error",
+            {
+                "imports": "never",
+                "functions": "never",
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "exports": "always-multiline"
+            }
+        ],
+        "id-length": [
+            2,
+            {
+                "exceptions": [
+                    "e",
+                    "i",
+                    "t"
+                ]
+            }
+        ],
+        "max-len": [
+            1,
+            80
+        ],
+        "import/no-duplicates": 2,
+        "no-duplicate-imports": 0,
+        "react/no-unknown-property": 2,
+        "import/extensions": [
+            "error",
+            "never",
+            {
+                "less": "always",
+                "json": "always",
+                "css": "always",
+                "png": "always"
+            }
+        ],
+        "react/jsx-filename-extension": [
+            2,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        ],
+        "react/sort-comp": [
+            2,
+            {
+                "order": [
+                    "static-methods",
+                    "props",
+                    "context",
+                    "lifecycle",
+                    "everything-else",
+                    "render"
+                ]
+            }
+        ],
+        "arrow-parens": 0,
+        "import/no-extraneous-dependencies": 0,
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "@typescript-eslint/array-type": [
+            "warn",
+            {
+                "default": "array"
+            }
+        ],
+        "@typescript-eslint/no-unnecessary-type-arguments": "warn",
+        "@typescript-eslint/restrict-plus-operands": "warn",
+        "@typescript-eslint/unified-signatures": "warn",
+        "no-unused-expressions": "off",
+        "@typescript-eslint/no-unused-expressions": [
+            "error"
+        ]
+    },
+    "overrides": [
+        {
+            "files": [
+                "*.ts",
+                "*.tsx"
+            ],
+            "rules": {
+                "@typescript-eslint/explicit-member-accessibility": [
+                    "error"
+                ]
+            }
+        }
+    ],
+    "globals": {
+        "NOOP": false
+    }
+}

@@ -1,0 +1,69 @@
+image:
+  name: taxcaddyacr.azurecr.io/taxcaddy-pipelines
+  username: $ACR_USERNAME
+  password: $ACR_PASSWORD
+options:
+  max-time: 10
+clone:
+  depth: 50
+pipelines:
+  branches:
+    dev:
+      - step:
+          name: Deploy to Dev
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run test-silent
+            - ./scripts/build.js --env=dev
+            - ./scripts/deploy.js --env=dev
+      - step:
+          name: Deploy to QA
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run test-silent
+            - ./scripts/build.js --env=qa
+            - ./scripts/deploy.js --env=qa
+    dev-release/*:
+      - step:
+          name: Deploy to Dev
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run test-silent
+            - ./scripts/build.js --env=dev
+            - ./scripts/deploy.js --env=dev
+    release/*:
+      - step:
+          name: Deploy to stage
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run test-silent
+            - ./scripts/build.js --env=stage
+            - ./scripts/deploy.js --env=stage
+    master:
+      - step:
+          name: Deploy to stage
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run test-silent
+            - ./scripts/build.js --env=stage
+            - ./scripts/deploy.js --env=stage
+      - step:
+          name: Deploy to prod
+          trigger: manual
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run test-silent
+            - ./scripts/build.js --env=prod
+            - ./scripts/deploy.js --env=prod

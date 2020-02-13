@@ -1,0 +1,14 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Review Wizard OpenApis",
+        "description": "apis for review wizard",
+        "version": "0.1"
+    },
+    "servers": [
+    ],
+    "paths": {
+    },
+    "components": {
+    }
+}
