@@ -1,18 +1,23 @@
 import React from 'react';
-import { useLocation, useHistory } from 'react-router';
 import ErrorContent from './ErrorContent';
 
 
 const ErrorPage = (): JSX.Element => {
-    const location = useLocation();
-    const { error } = location.state;
+    // const location = useLocation();
+    // const { error } = location.state;
 
-    const history = useHistory();
+    // const history = useHistory();
 
     const handleClick = () => {
-        history.replace('/dashboard');
+        // history.replace('/dashboard');
+        // redirect
     };
 
-    return <ErrorContent error={error.status} handleClick={handleClick} />;
+    return (
+        <ErrorContent
+            // error={error.status}
+            handleClick={handleClick}
+        />
+    );
 };
 export default ErrorPage;

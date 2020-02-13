@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import ThemeContext from '@context/ThemeContext';
 import GenericErrorBoundary from '@components/GenericErrorBoundary';
 import FullScreenLoader from '@components/FullScreenLoader';
-import history from './WizardHistory';
 import App from './App';
 import Token from './TokenComponent';
 
