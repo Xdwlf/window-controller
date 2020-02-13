@@ -5,16 +5,16 @@ currentBranch=$(git branch | grep \* | cut -d ' ' -f2)
 
 ./scripts/hooks/dependency-check.js
 
-if [[ "$currentBranch" == "master" ]]; then
-    echo 'You are commiting to master, this will create an automatic deployment to stage'
-    read -p "Do you want to proceed to commit and make a build? [y|n] " -n 1 -r < /dev/tty
-    echo
-    if [[ $REPLY != "y" ]]; then
-        echo
-        echo "aborting...."
-        exit 1;
-    fi
-fi
+# if [[ "$currentBranch" == "master" ]]; then
+#     echo 'You are commiting to master, this will create an automatic deployment to stage'
+#     read -p "Do you want to proceed to commit and make a build? [y|n] " -n 1 -r < /dev/tty
+#     echo
+#     if [[ $REPLY != "y" ]]; then
+#         echo
+#         echo "aborting...."
+#         exit 1;
+#     fi
+# fi
 
 lintErrors=$(./node_modules/.bin/eslint \
     --cache \
