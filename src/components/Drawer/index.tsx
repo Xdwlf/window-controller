@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
 import Button from '@material-ui/core/Button';
@@ -24,6 +24,7 @@ type DrawerProps = {
     controls: JSX.Element;
     children: JSX.Element;
     transitionTime?: number;
+    onClose: () => void;
     width?: number;
     open: boolean;
 }
@@ -67,35 +68,19 @@ const DrawerContent = (props: DrawerContentProps): JSX.Element => {
 
 
 const Drawer = ({
-    transitionTime, controls, children, open = false, width = 350,
+    transitionTime, controls, children, open = false, width = 350, onClose,
 }: DrawerProps): JSX.Element => {
     const defaultTransitionTime = 250;
-    const [isOpen, setIsOpen] = useState(open);
     const transition = transitionTime || defaultTransitionTime;
 
     const closeDrawer = (): void => {
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-                setIsOpen(false);
+                onClose();
             });
         });
     };
 
-    const openDrawer = (): void => {
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                setIsOpen(true);
-            });
-        });
-    };
-
-    React.useEffect(() => {
-        if (open && !isOpen) {
-            openDrawer();
-        } else if (!open && isOpen) {
-            closeDrawer();
-        }
-    }, [isOpen, open]);
 
     const closeButton = (
         <div

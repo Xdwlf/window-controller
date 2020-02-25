@@ -7,10 +7,10 @@ import '@toolkit/lessToolkit/general.less';
 
 
 const App = (): JSX.Element => {
-    const [loaded, setLoaded] = React.useState(false);
+    const [loaded, setLoaded] = React.useState(true);
 
     React.useEffect(() => {
-        if (loaded) {
+        if (!loaded) {
             showFullScreenLoader();
         } else {
             hideFullScreenLoader();
