@@ -17,7 +17,7 @@ module.exports = {
     mode: 'development',
     entry: {
         main: path.resolve(__dirname, '../src/index.tsx'),
-        unsupportedBrowser: path.resolve(__dirname, '../src/UnsupportedBrowser/index.tsx'),
+        // unsupportedBrowser: path.resolve(__dirname, '../src/UnsupportedBrowser/index.tsx'),
     },
     optimization: {
         minimizer: [
