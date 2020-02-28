@@ -17,7 +17,7 @@ module.exports = {
     mode: 'development',
     entry: {
         main: path.resolve(__dirname, '../src/index.tsx'),
-        // unsupportedBrowser: path.resolve(__dirname, '../src/UnsupportedBrowser/index.tsx'),
+        popup: path.resolve(__dirname, '../src/PopupWindow.tsx'),
     },
     optimization: {
         minimizer: [
@@ -36,6 +36,14 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: path.resolve(__dirname, '../src/index.html'),
+            chunks: ["main"],
+            hash: true,
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'popup.html',
+            template: path.resolve(__dirname, '../src/index.html'),
+            chunks: ["popup"],
+
             hash: true,
         }),
         new MiniCssExtractPlugin({
@@ -69,7 +77,7 @@ module.exports = {
     },
     output: {
         chunkFilename: '[name].[chunkhash].js',
-        filename: 'bundle.[chunkhash].js',
+        filename: '[name].bundle.[chunkhash].js',
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/',
     },

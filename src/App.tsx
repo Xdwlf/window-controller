@@ -1,27 +1,18 @@
 import React from 'react';
-import { showFullScreenLoader, hideFullScreenLoader } from '@components/FullScreenLoader';
-// import IdleTimer from '@components/IdleTimer';
 import AuthenticatedApp from 'AuthenticatedApp';
 import UnauthenticatedApp from 'UnauthenticatedApp';
-import '@toolkit/lessToolkit/general.less';
-
+import { Typography } from '@material-ui/core';
 
 const App = (): JSX.Element => {
     const [loaded, setLoaded] = React.useState(true);
 
-    React.useEffect(() => {
-        if (!loaded) {
-            showFullScreenLoader();
-        } else {
-            hideFullScreenLoader();
-        }
-    }, [loaded]);
     return (
         <>
-            {/* <IdleTimer /> */}
-            <main>
-                {loaded ? <AuthenticatedApp /> : <UnauthenticatedApp />}
-            </main>
+            <Typography component="main" color="inherit">
+                <main>
+                    {loaded ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+                </main>
+            </Typography>
         </>
     );
 };

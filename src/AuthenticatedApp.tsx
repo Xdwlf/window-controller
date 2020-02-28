@@ -1,11 +1,11 @@
 import React from 'react';
-import Drawer from '@components/Drawer';
+import ParentWindow from './screens/ParentWindow';
 
 export const AuthenticatedApp = (): JSX.Element => {
     const [open, setOpen] = React.useState(false);
     return (
         <div>
-            You&apos;re a wizard Joey.
+            <ParentWindow />
         </div>
     );
 };
