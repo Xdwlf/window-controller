@@ -16,8 +16,6 @@ module.exports = {
     moduleNameMapper: {
         '\\.(css|jpg|png|svg|Icons)$': '<rootDir>/test/mocks/empty-module.ts',
         '\\.(css|less)$': '<rootDir>/test/css-modules.ts',
-        "src/DashboardHistory": '<rootDir>/src/DashboardHistory',
-        "test/RouterMock": '<rootDir>/test/RouterMock',
         "^@toolkit(.*)$": '<rootDir>/src/toolkit$1',
         "^@hooks(.*)$": '<rootDir>/src/hooks$1',
         "^@components(.*)$": '<rootDir>/src/components$1',
@@ -26,7 +24,6 @@ module.exports = {
         '^@services/FetchAdapter': '<rootDir>/test/ApiMock',
         '^lodash/debounce': '<rootDir>/test/mocks/debounce',
         '^@services(.*)$': '<rootDir>/src/services$1',
-        '^@navigation(.*)$': '<rootDir>/src/navigation$1',
         "^@context/UserContext": '<rootDir>/test/userContextMock',
         "^@context/CpaUserContext": '<rootDir>/test/cpaContextMock',
         "^@context(.*)$": '<rootDir>/src/context$1',
